@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Courses</title>
+        {%load static%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+        <h1> {{ request.session.name}}  </h1>
+    <div>
+        {% for q in travel_info %}
+        <h3>{{q.destination}}</h3>
+            <p>Planned by: {{q.user.name}}</p>
+            <p>Description : {{q.description}}</p>
+            <p>Travel date from: {{q.date_from}}</p>
+            <p>Travel date from: {{q.date_to}}</p>
+        <h4>Other's user's joining the group:</h4>
+            
+
+         {% endfor %}
+    </div>
+        <a href="/travel">Home</a> |
+        <a href="/logout">Logout</a>
+        </div>
+    </body> 
+</html>

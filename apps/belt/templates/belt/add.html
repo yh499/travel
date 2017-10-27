@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Courses</title>
+        {%load static%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <h1>{{ request.session.name}} </h1>
+
+            <form action="/add" method='post'>
+            {% csrf_token %}
+            Destination :<br>
+            <input type="text" name="destination"><br>
+            Description: <br>
+            <input type="text" name="description"><br>
+            Travel data from:
+            <input type="date" name="date_from"><br>
+            Travel Date to:
+            <input type="date" name="date_to"><br>
+            <input type="submit" value="submit">
+            </form>
+            {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            <a href="/travel">Home</a> |
+            <a href="/logout">Logout</a>
+        </div>
+    </body> 
+</html>

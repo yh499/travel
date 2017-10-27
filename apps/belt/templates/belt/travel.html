@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Courses</title>
+        {%load static%}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+        <h1>Success! Welcome, {{ request.session.name}} </h1>
+
+        <h2>Your trip schedule</h2>
+            <div><hr>
+            {% for q in join %}
+                     <table class="table">
+                        <tr class="success">
+                            <th>Destination</th>
+                            <th>Travel start Date</th> 
+                            <th>Travel end date</th>
+                            <th>Plan</th>
+                        </tr>
+                        <tr>
+                            <td><a href="/dest/{{q.id}}"> {{q.destination}} </a></td>
+                            <td>{{q.date_from}}</td>
+                            <td>{{q.date_to}}</td>
+                            <td>{{q.description}}</td>
+                        </tr>
+                    </table>
+
+            </div>
+            {% endfor %}
+            <h2>Other's User's travel plans</h2>
+            <div><hr>
+                {% for q in travel_info %}
+                    <table class="table">
+                        <tr class="success">
+                            <th>Name</th>
+                            <th>Destination</th>
+                            <th>Travel start Date</th> 
+                            <th>Travel end date</th>
+                            <th>Do you want to join?</th>
+                        </tr>
+                        <tr>
+                            <td>{{q.user.name}}</td>
+                            <td><a href="/dest/{{q.id}}"> destination </a></td>
+                            <td>{q.date_from}}</td>
+                            <td>{q.date_to}}</td>
+                            <td><a href="/join/{{q.id}}"> JOIN </a>/td>
+                        </tr>
+                    </table>
+                {% endfor %}
+            </div>
+            <a href="/add_plan">----Add Travel Plan-----</a>
+
+                <a href="/logout">Logout</a>
+        </div>
+    </body> 
+</html>
